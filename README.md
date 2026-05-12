@@ -140,10 +140,10 @@ Load testing is performed to evaluate how the application behaves under expected
 **Result/Outcome** 
 <img width="902" height="757" alt="Load Test" src="https://github.com/user-attachments/assets/a5f96b8a-30a7-47f7-ad5f-4106b442a2e4" />
 
-•	Stable response time
-•	Minimal failures
-•	Consistent request handling
-•	Smooth system operation under normal load
+- Stable response time
+- Minimal failures
+- Consistent request handling
+- Smooth system operation under normal load
  
 
 ---
@@ -151,10 +151,10 @@ Load testing is performed to evaluate how the application behaves under expected
 ## 🧪 5.0 Stress Test
 Stress testing is conducted to determine the maximum limit of the system by gradually increasing traffic beyond normal operating capacity.
 The purpose is to observe:
-•	System degradation
-•	Performance bottlenecks
-•	Failure points
-•	Recovery capability
+- System degradation
+- Performance bottlenecks
+- Failure points
+- Recovery capability
 
 **Test Configuration**
 | Parameter	| Value |
@@ -166,10 +166,10 @@ The purpose is to observe:
 **Result/Outcome** 
 <img width="1090" height="860" alt="Stress Test" src="https://github.com/user-attachments/assets/ba58e7a2-ef3b-4f69-adcd-82428745a23c" />
 
-•	Increased response time
-•	Possible request failures
-•	System slowdown under heavy load
-•	Identification of maximum handling capacity
+- Increased response time
+- Possible request failures
+- System slowdown under heavy load
+- Identification of maximum handling capacity
 
 
 ---
@@ -177,9 +177,9 @@ The purpose is to observe:
 ## ⚡ 6.0 Spike Test
 Spike testing evaluates how the application reacts to sudden and extreme increases in traffic within a short period.
 This test determines whether the system can:
-•	Handle sudden traffic surges
-•	Maintain availability
-•	Recover after traffic returns to normal
+- Handle sudden traffic surges
+- Maintain availability
+- Recover after traffic returns to normal
 
 **Test Configuration**
 | Stage	| Users |
@@ -191,9 +191,9 @@ This test determines whether the system can:
 **Result/Outcome** 
 <img width="1086" height="856" alt="Spike Test" src="https://github.com/user-attachments/assets/af168e45-2764-4c05-88f8-b3580adb0e5f" />
 
-•	Temporary increase in response time
-•	Possible failures during spike
-•	Recovery after traffic decreases
+- Temporary increase in response time
+- Possible failures during spike
+- Recovery after traffic decreases
 
 
 ---
