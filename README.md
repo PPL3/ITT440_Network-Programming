@@ -237,6 +237,7 @@ Yes
 - During ramp-up to 1,000 users, RPS fluctuated erratically (between ~30–170) suggesting the server was struggling to accept new connections consistently.
 - After ramp-down back to ~30 users, RPS stabilised at ~30 and response times returned to near-normal — the application did recover, but slowly.
 - The second 95th percentile spike (~480,000 ms) occurred around 15:11 when users were nearly fully ramped down — likely queued requests from the peak finally timing out.
+
 ❌Fail — the system cannot handle sudden large spikes. Significant capacity, auto-scaling, or queue management improvements are required.
 
 
