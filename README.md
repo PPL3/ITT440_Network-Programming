@@ -123,7 +123,7 @@ Run Locust:
 ```bash
 locust -H https://192.168.100.22:3000
 ```
-Dashboard: `http://localhost:8089`
+Go to browser and browse: `http://localhost:8089` to see the Dashboard of Locust.
 
 ---
 
@@ -140,16 +140,16 @@ Load testing is performed to evaluate how the application behaves under expected
 **Result/Outcome** 
 <img width="902" height="757" alt="Load Test" src="https://github.com/user-attachments/assets/a5f96b8a-30a7-47f7-ad5f-4106b442a2e4" />
 
-Peak RPS
+Peak RPS:
 ~25
 
-Avg response time
+Avg response time:
 ~40 ms
 
-95th percentile
+95th percentile:
 ~64 ms
 
-Failures/s
+Failures/s:
 0
 
 - RPS stabilised quickly at ~25 after ramp-up, with no fluctuation — system handled the load cleanly.
@@ -181,16 +181,16 @@ The purpose is to observe:
 <img width="1090" height="860" alt="Stress Test" src="https://github.com/user-attachments/assets/ba58e7a2-ef3b-4f69-adcd-82428745a23c" />
 
 
-Peak RPS
+Peak RPS:
 ~183
 
-Avg response time
+Avg response time:
 ~3,876 ms
 
-95th percentile
+95th percentile:
 ~18,000 ms
 
-Failures/s
+Failures/s:
 ~0
 
 - Response times degraded severely at startup — 95th percentile hit ~18,000 ms early on, indicating the system was overwhelmed during ramp-up.
@@ -220,16 +220,16 @@ This test determines whether the system can:
 **Result/Outcome** 
 <img width="1086" height="856" alt="Spike Test" src="https://github.com/user-attachments/assets/af168e45-2764-4c05-88f8-b3580adb0e5f" />
 
-Peak RPS
+Peak RPS:
 ~170
 
-Peak 95th pct
+Peak 95th pct:
 ~480,000 ms
 
-Peak users
+Peak users:
 1,000
 
-Failures at peak
+Failures at peak:
 Yes
 
 - At peak load (1,000 users), the 95th percentile response time spiked to ~480,000 ms (~8 minutes) — the system was effectively unresponsive to a large portion of users.
