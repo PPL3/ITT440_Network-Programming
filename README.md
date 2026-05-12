@@ -127,7 +127,7 @@ Dashboard: `http://localhost:8089`
 
 ---
 
-## 📊 4.0 Load Test
+## 📊 4.0 Load Test (Normal operating conditions)
 Load testing is performed to evaluate how the application behaves under expected normal traffic conditions. The objective is to ensure the system can maintain stable performance during regular usage.
 
 **Test Configuration**
@@ -140,15 +140,29 @@ Load testing is performed to evaluate how the application behaves under expected
 **Result/Outcome** 
 <img width="902" height="757" alt="Load Test" src="https://github.com/user-attachments/assets/a5f96b8a-30a7-47f7-ad5f-4106b442a2e4" />
 
-- Stable response time
-- Minimal failures
-- Consistent request handling
-- Smooth system operation under normal load
- 
+Peak RPS
+~25
+
+Avg response time
+~40 ms
+
+95th percentile
+~64 ms
+
+Failures/s
+0
+
+- RPS stabilised quickly at ~25 after ramp-up, with no fluctuation — system handled the load cleanly.
+- Average response time settled at ~40 ms and 95th percentile ~64 ms — excellent latency for 50 concurrent users.
+- Zero failures throughout the entire test window. The app is stable under normal load.
+- A brief spike in 95th percentile (~650 ms) appeared at startup before settling — likely JVM/process warm-up, not a real concern.
+
+✅Pass — application performs well under normal expected load.
+
 
 ---
 
-## 🧪 5.0 Stress Test
+## 🧪 5.0 Stress Test (Beyond normal capacity)
 Stress testing is conducted to determine the maximum limit of the system by gradually increasing traffic beyond normal operating capacity.
 The purpose is to observe:
 - System degradation
@@ -166,15 +180,30 @@ The purpose is to observe:
 **Result/Outcome** 
 <img width="1090" height="860" alt="Stress Test" src="https://github.com/user-attachments/assets/ba58e7a2-ef3b-4f69-adcd-82428745a23c" />
 
-- Increased response time
-- Possible request failures
-- System slowdown under heavy load
-- Identification of maximum handling capacity
+
+Peak RPS
+~183
+
+Avg response time
+~3,876 ms
+
+95th percentile
+~18,000 ms
+
+Failures/s
+~0
+
+- Response times degraded severely at startup — 95th percentile hit ~18,000 ms early on, indicating the system was overwhelmed during ramp-up.
+- Performance recovered gradually over time — avg response time fell from ~9,000 ms down to ~2,000 ms by the end, showing the system can self-stabilise but takes several minutes.
+- No hard failures recorded (Failures/s ≈ 0), meaning the server didn't crash — it just became very slow under sustained 500-user load.
+- RPS peaked at ~183 and remained high and variable — the system was processing requests but queuing caused the high latency.
+
+⚠️Warning — system survives but response times are unacceptably high at 500 users. Optimisation or scaling is needed above this threshold.
 
 
 ---
 
-## ⚡ 6.0 Spike Test
+## ⚡ 6.0 Spike Test (Sudden traffic burst & recovery)
 Spike testing evaluates how the application reacts to sudden and extreme increases in traffic within a short period.
 This test determines whether the system can:
 - Handle sudden traffic surges
@@ -191,9 +220,24 @@ This test determines whether the system can:
 **Result/Outcome** 
 <img width="1086" height="856" alt="Spike Test" src="https://github.com/user-attachments/assets/af168e45-2764-4c05-88f8-b3580adb0e5f" />
 
-- Temporary increase in response time
-- Possible failures during spike
-- Recovery after traffic decreases
+Peak RPS
+~170
+
+Peak 95th pct
+~480,000 ms
+
+Peak users
+1,000
+
+Failures at peak
+Yes
+
+- At peak load (1,000 users), the 95th percentile response time spiked to ~480,000 ms (~8 minutes) — the system was effectively unresponsive to a large portion of users.
+- Failure rate appeared during the spike peak, indicating the system began dropping or timing out requests — a partial failure state.
+- During ramp-up to 1,000 users, RPS fluctuated erratically (between ~30–170) suggesting the server was struggling to accept new connections consistently.
+- After ramp-down back to ~30 users, RPS stabilised at ~30 and response times returned to near-normal — the application did recover, but slowly.
+- The second 95th percentile spike (~480,000 ms) occurred around 15:11 when users were nearly fully ramped down — likely queued requests from the peak finally timing out.
+❌Fail — the system cannot handle sudden large spikes. Significant capacity, auto-scaling, or queue management improvements are required.
 
 
 ---
@@ -215,4 +259,5 @@ The performance testing successfully evaluated the application under different t
 
 Overall, the testing demonstrates that the system performs adequately under normal operating conditions but requires optimization for handling very high traffic loads and sudden spikes. Improvements such as server scaling, database optimization, caching mechanisms, and load balancing are recommended to improve system stability and performance under extreme conditions.
 
+## 🎥 9.0 Demonstration Videos
 
