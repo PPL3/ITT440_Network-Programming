@@ -94,9 +94,9 @@ class WebsiteUser(HttpUser):
 ```
 Save:
 
-CTRL + O
-ENTER
-CTRL + X
+- CTRL + O
+- ENTER
+- CTRL + X
 
 
 ```bash
