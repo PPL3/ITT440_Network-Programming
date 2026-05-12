@@ -209,7 +209,9 @@ This test determines whether the system can:
 
 The performance testing successfully evaluated the application under different traffic conditions using Locust and OWASP ZAP.
 
-The Load Test showed that the system can handle normal user traffic with stable response times and minimal failures. During the Stress Test, the application experienced slower response times and performance degradation as the number of users increased significantly. In the Spike Test, sudden traffic surges caused instability and high latency, indicating that the server has limitations when handling abrupt increases in concurrent users.
+1. The Load Test showed that the system can handle normal user traffic with stable response times and minimal failures.
+2. During the Stress Test, the application experienced slower response times and performance degradation as the number of users increased significantly.
+3. In the Spike Test, sudden traffic surges caused instability and high latency, indicating that the server has limitations when handling abrupt increases in concurrent users.
 
 Overall, the testing demonstrates that the system performs adequately under normal operating conditions but requires optimization for handling very high traffic loads and sudden spikes. Improvements such as server scaling, database optimization, caching mechanisms, and load balancing are recommended to improve system stability and performance under extreme conditions.
 
