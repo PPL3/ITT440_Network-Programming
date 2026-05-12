@@ -31,15 +31,15 @@ Performance testing is an important activity in system testing to evaluate how a
 In this assessment, the performance testing tool used is Locust together with OWASP Juice Shop. Locust is used to simulate user traffic and measure system performance, while OWASP Juice Shop is used to support security-related testing and traffic inspection.
 
 Three types of performance tests were conducted:
-•	Load Test
-•	Stress Test
-•	Spike Test
+- Load Test
+- Stress Test
+- Spike Test
 
 The purpose of these tests is to evaluate:
-•	System responsiveness
-•	Maximum handling capacity
-•	Stability under heavy traffic
-•	Recovery capability after sudden traffic spikes
+- System responsiveness
+- Maximum handling capacity
+- Stability under heavy traffic
+- Recovery capability after sudden traffic spikes
 
 ---
 
@@ -97,14 +97,25 @@ Save:
 CTRL + O
 ENTER
 CTRL + X
+
+
 ```bash
 sudo apt install python3-locust
-locust -f locustfile.py --host=http://192.168.100.22:3000
+locust -f locustfile.py --host=http://localhost:3000
 sudo apt install python3-venv -y
+```
+Create new directory:
+```bash
 mkdir locust
+```
+Locate the locust file and activate it:
+```bash
 cd locust
 python3 -m venv venv
 source venv/bin/activate
+```
+Install the locust after activate:
+```bash
 pip install locust
 locust --version
 ```
@@ -127,6 +138,8 @@ Load testing is performed to evaluate how the application behaves under expected
 | Duration	| 5 minutes |
 
 **Result/Outcome** 
+<img width="902" height="757" alt="Load Test" src="https://github.com/user-attachments/assets/a5f96b8a-30a7-47f7-ad5f-4106b442a2e4" />
+
 •	Stable response time
 •	Minimal failures
 •	Consistent request handling
@@ -151,6 +164,8 @@ The purpose is to observe:
 | Duration	| 10 minutes | 
 
 **Result/Outcome** 
+<img width="1090" height="860" alt="Stress Test" src="https://github.com/user-attachments/assets/ba58e7a2-ef3b-4f69-adcd-82428745a23c" />
+
 •	Increased response time
 •	Possible request failures
 •	System slowdown under heavy load
@@ -174,6 +189,8 @@ This test determines whether the system can:
 | Recovery | 10 | 
 
 **Result/Outcome** 
+<img width="1086" height="856" alt="Spike Test" src="https://github.com/user-attachments/assets/af168e45-2764-4c05-88f8-b3580adb0e5f" />
+
 •	Temporary increase in response time
 •	Possible failures during spike
 •	Recovery after traffic decreases
@@ -181,9 +198,8 @@ This test determines whether the system can:
 
 ---
 
-## 📈 7.0 Results
 
- 
+## 📌 8.0 Conclusion & Recommendation
 
 | Test Type   | Result |
 |-------------|--------|
@@ -191,12 +207,10 @@ This test determines whether the system can:
 | Stress Test | Degradation ⚠️ |
 | Spike Test | Instability ❌ |
 
----
-
-
-## 📌 8.0 Conclusion & Recommendation
 The performance testing successfully evaluated the application under different traffic conditions using Locust and OWASP ZAP.
+
 The Load Test showed that the system can handle normal user traffic with stable response times and minimal failures. During the Stress Test, the application experienced slower response times and performance degradation as the number of users increased significantly. In the Spike Test, sudden traffic surges caused instability and high latency, indicating that the server has limitations when handling abrupt increases in concurrent users.
+
 Overall, the testing demonstrates that the system performs adequately under normal operating conditions but requires optimization for handling very high traffic loads and sudden spikes. Improvements such as server scaling, database optimization, caching mechanisms, and load balancing are recommended to improve system stability and performance under extreme conditions.
 
 
